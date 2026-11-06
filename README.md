@@ -86,7 +86,7 @@ Supporting design (not separate features, they make reflection and planning trus
 - **Single agent, many steps.** One planner/writer/reviewer role set over one model is simpler to debug than multi-agent. The DAG executor leaves room to swap in specialised workers or a queue later.
 - **Stateless service.** A run holds no shared state (per-request stats use a `ContextVar`), so it scales horizontally; moving long runs to a job queue is the obvious next step.
 
-## Limits (honest)
+## Limits 
 
 - The default local configuration uses one concurrent task, a 180-second model timeout, and two LLM attempts to limit resource pressure on CPU-only laptops. Real-model quality depends on the model you run; verify both example inputs against your model before recording.
 - Review is another model call: it can be wrong, so `met` means "the reviewer believes so", and warnings are surfaced.
